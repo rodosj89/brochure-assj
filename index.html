@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asociación Civil de Sordos San Juan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <style>
+    /* ---------- RESET & BASE ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1A1A1A;
+      background: #FFFFFF;
+      line-height: 1.7;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ---------- COLORES (provisionales, los ajusto cuando me describas el logo) ---------- */
+    :root {
+      --azul-institucional: #1B305B; /* Azul marino elegante */
+      --rojo-institucional: #C82629; /* Rojo vibrante */
+      --blanco: #FFFFFF;
+      --gris-suave: #F8F9FA;
+      --texto-oscuro: #1A1A1A;
+      --sombra: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    /* ---------- TIPOGRAFÍA ---------- */
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: var(--rojo-institucional);
+    }
+    .text-center h2::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .text-center {
+      text-align: center;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background: var(--blanco);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+      padding: 0.8rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 4px solid var(--rojo-institucional);
+    }
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* ---------- PLACEHOLDER DEL LOGO (con borde doble) ---------- */
+    .logo-placeholder {
+      width: 75px;
+      height: 75px;
+      background: var(--blanco);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.7rem;
+      text-align: center;
+      line-height: 1.2;
+      color: var(--azul-institucional);
+      border: 5px solid var(--azul-institucional);
+      outline: 3px solid var(--rojo-institucional);
+      outline-offset: 2px;
+      flex-shrink: 0;
+      padding: 5px;
+    }
+    .logo-placeholder span {
+      display: block;
+      font-size: 0.5rem;
+      font-weight: 400;
+      color: var(--rojo-institucional);
+    }
+
+    .logo h1 {
+      font-size: 1.3rem;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .logo h1 .nombre {
+      color: var(--azul-institucional);
+    }
+    .logo h1 .ciudad {
+      color: var(--rojo-institucional);
+    }
+    .logo .fecha-fundacion {
+      font-size: 0.7rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      background: var(--azul-institucional);
+      color: white;
+      padding: 2px 12px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--texto-oscuro);
+      margin-left: 2rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+    nav a:hover {
+      color: var(--rojo-institucional);
+      border-bottom-color: var(--rojo-institucional);
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      background: linear-gradient(135deg, var(--azul-institucional) 0%, #1a3a5c 100%);
+      color: white;
+      padding: 5rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero .fecha-destacada {
+      display: inline-block;
+      background: var(--rojo-institucional);
+      padding: 0.3rem 2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 15px rgba(193, 18, 31, 0.3);
+    }
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .hero h2::after {
+      display: none;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 750px;
+      margin: 0 auto 2rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--rojo-institucional);
+      color: white;
+      padding: 0.9rem 2.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 4px 15px rgba(193, 18, 31, 0.4);
+    }
+    .btn:hover {
+      background: #8f0f1a;
+      transform: scale(1.04);
+    }
+
+    /* ---------- SECCIONES ---------- */
+    section {
+      padding: 5rem 0;
+    }
+    .section-alt {
+      background: var(--gris-suave);
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2.5rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    .card {
+      background: white;
+      padding: 2.2rem;
+      border-radius: 20px;
+      box-shadow: var(--sombra);
+      transition: transform 0.25s, box-shadow 0.25s;
+      border-top: 4px solid var(--azul-institucional);
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    }
+    .card h3 {
+      color: var(--azul-institucional);
+      margin-bottom: 0.8rem;
+      font-size: 1.4rem;
+    }
+    .card .icon {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* ---------- CONTACTO ---------- */
+    .contacto-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      justify-content: center;
+      margin-top: 2.5rem;
+    }
+    .contacto-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: white;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      box-shadow: var(--sombra);
+      border: 1px solid #eee;
+    }
+    .contacto-item span {
+      font-size: 2rem;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--azul-institucional);
+      color: white;
+      padding: 2.5rem 0;
+      text-align: center;
+      border-top: 5px solid var(--rojo-institucional);
+    }
+    footer a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      margin: 0 0.8rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    footer a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 768px) {
+      .header-flex {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      nav a {
+        margin: 0 0.8rem;
+        font-size: 0.9rem;
+      }
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      .container {
+        padding: 0 1.2rem;
+      }
+      section {
+        padding: 3rem 0;
+      }
+      .contacto-item {
+        width: 100%;
+        justify-content: center;
+      }
+      .logo h1 {
+        font-size: 1rem;
+      }
+      .logo .fecha-fundacion {
+        font-size: 0.6rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .logo-placeholder {
+        width: 55px;
+        height: 55px;
+        font-size: 0.5rem;
+      }
+      .btn {
+        padding: 0.7rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container header-flex">
+      <div class="logo">
+        <!-- === REEMPLAZA ESTE BLOQUE POR TU LOGO REAL === -->
+        <img src="src/images/logo.png" alt="Asociación Civil de Sordos San Juan" style="height:75px; width:auto;" />
+        <div>
+          <h1>
+            <span class="nombre">Asociación Civil</span><br />
+            <span class="nombre">de Sordos</span> <span class="ciudad">San Juan</span>
+          </h1>
+          <span class="fecha-fundacion">📅 Fundada 25-01-1960</span>
+        </div>
+      </div>
+      <nav>
+        <a href="#quienes">Quiénes</a>
+        <a href="#mision">Misión</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="fecha-destacada">✦ 25 de Enero de 1960 ✦</div>
+      <h2>Más de 65 años de lucha<br />por la inclusión</h2>
+      <p>
+        Desde nuestra fundación en 1960, trabajamos sin descanso para garantizar la accesibilidad 
+        y el respeto por la identidad de la comunidad sorda en la provincia de San Juan, Argentina.
+      </p>
+      <a href="#contacto" class="btn">Conocé nuestra historia</a>
+    </div>
+  </section>
+
+  <!-- QUIÉNES SOMOS -->
+  <section id="quienes">
+    <div class="container">
+      <div class="text-center">
+        <h2>Quiénes somos</h2>
+      </div>
+      <p style="max-width:850px; margin:1.5rem auto 0; text-align:center; font-size:1.1rem;">
+        La <strong>Asociación Civil de Sordos San Juan</strong> es una institución sin fines de lucro, 
+        pionera en la defensa de los derechos de las personas sordas e hipoacúsicas en la región de Cuyo. 
+        Nacimos el <strong>25 de enero de 1960</strong> por voluntad de un grupo de familias y educadores 
+        comprometidos con la comunicación y la igualdad.
+      </p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>📜 Nuestra trayectoria</h3>
+          <p>
+            Con más de seis décadas de historia, hemos sido testigos y protagonistas de la evolución 
+            de la Lengua de Señas Argentina (LSA) y de las políticas de accesibilidad en la provincia.
+          </p>
+        </div>
+        <div class="card">
+          <h3>🤟 Valores institucionales</h3>
+          <p>
+            <strong>Compromiso</strong> con la comunidad, <strong>transparencia</strong> en la gestión, 
+            <strong>solidaridad</strong> activa y una profunda <strong>vocación</strong> por derribar 
+            barreras comunicacionales y culturales.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISIÓN Y VISIÓN -->
+  <section id="mision" class="section-alt">
+    <div class="container">
+      <div class="text-center">
+        <h2>Misión y Visión</h2>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <span class="icon">🎯</span>
+          <h3>Misión</h3>
+          <p>
+            Promover la plena accesibilidad en todos los ámbitos (educación, salud, justicia y trabajo) 
+            garantizando el derecho a la comunicación a través de la <strong>Lengua de Señas Argentina</strong> 
+            y el respeto por la identidad cultural sorda en San Juan.
+          </p>
+        </div>
+        <div class="card">
+          <span class="icon">🔭</span>
+          <h3>Visión</h3>
+          <p>
+            Ser la entidad de referencia en la región de Cuyo en materia de accesibilidad e inclusión, 
+            continuando con el legado de nuestros fundadores de 1960 e inspirando a futuras generaciones.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="container">
+      <div class="text-center">
+        <h2>Nuestros servicios</h2>
+        <p style="max-width:600px; margin:0 auto 0.5rem; color:#555;">
+          Acompañamiento integral para la comunidad sorda y sus familias.
+        </p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <span class="icon">🧏</span>
+          <h3>Interpretación en LSA</h3>
+          <p>
+            Servicio profesional de interpretación para trámites, consultas médicas, reuniones 
+            laborales y eventos institucionales en toda la provincia.
+          </p>
+        </div>
+        <div class="card">
+          <span class="icon">📘</span>
+          <h3>Capacitación y talleres</h3>
+          <p>
+            Cursos de LSA para oyentes, talleres de lectoescritura para niños sordos y 
+            formación en derechos lingüísticos.
+          </p>
+        </div>
+        <div class="card">
+          <span class="icon">⚖️</span>
+          <h3>Acompañamiento legal</h3>
+          <p>
+            Asesoramiento y patrocinio jurídico gratuito para garantizar el acceso a la justicia 
+            y la igualdad de oportunidades.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="section-alt">
+    <div class="container">
+      <div class="text-center">
+        <h2>Contacto</h2>
+        <p style="max-width:500px; margin:0 auto 1rem; color:#555;">
+          Estamos en el corazón de San Juan. ¡Acercate o escribinos!
+        </p>
+      </div>
+      <div class="contacto-info">
+        <div class="contacto-item">
+          <span>📍</span>
+          <div>
+            <strong>Dirección</strong><br />
+            Av. Libertador 1234 (Oeste), San Juan, Argentina
+          </div>
+        </div>
+        <div class="contacto-item">
+          <span>📞</span>
+          <div>
+            <strong>Teléfono / WhatsApp</strong><br />
+            +54 264 422-0000 <small style="color:#888;">(con videollamada)</small>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <span>✉️</span>
+          <div>
+            <strong>Email</strong><br />
+            contacto@sordossanjuan.org.ar
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:2.5rem;">
+        <p style="font-size:0.95rem; color:#555;">
+          📱 Seguinos en redes para conocer nuestras actividades y novedades.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom:0.8rem;">
+        <a href="#">Facebook</a> · <a href="#">Instagram</a> · <a href="#">YouTube</a>
+      </p>
+      <p style="opacity:0.7; font-size:0.9rem;">
+        &copy; 2026 Asociación Civil de Sordos San Juan · Todos los derechos reservados
+      </p>
+      <p style="opacity:0.5; font-size:0.8rem; margin-top:0.5rem;">
+        💙 Fundada el 25 de enero de 1960 · 65+ años de historia inclusiva
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
